@@ -1,7 +1,6 @@
 package test;
 
 import lejos.hardware.lcd.LCD;
-import lejos.utility.Delay;
 import lejos.hardware.sensor.EV3UltrasonicSensor; // Port 4
 import lejos.robotics.SampleProvider;
 import lejos.hardware.port.SensorPort;
