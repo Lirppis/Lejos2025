@@ -14,6 +14,7 @@ public class MotorTest extends Thread{
     // Create a list to ensure that the motors are running in sync
     RegulatedMotor[] syncList = {Motor.C};
     SonicSensor sonicS = new SonicSensor();
+    int motorspeed;
     
     // Stopping motors
     public void stopMotors() {
@@ -33,6 +34,8 @@ public class MotorTest extends Thread{
         ultrasonicSensor.enable();
         Motor.D.synchronizeWith(syncList);
         Motor.D.startSynchronization();
+        Motor.D.setSpeed(500);
+        Motor.C.setSpeed(500);
         Motor.D.forward();                          
         Motor.C.forward();                        
         Motor.D.endSynchronization();
@@ -50,6 +53,15 @@ public class MotorTest extends Thread{
         while (Motor.D.isMoving()){
             Thread.yield();
         }
+    }
+
+    public void setmotorspeed (int motorspeed){
+        Motor.D.synchronizeWith(syncList);
+        //Rotating both motors 410 degrees to opposite directions
+        Motor.D.startSynchronization();
+        Motor.D.setSpeed(motorspeed);
+        Motor.C.setSpeed(motorspeed);
+        Motor.D.endSynchronization();
     }
 
 }

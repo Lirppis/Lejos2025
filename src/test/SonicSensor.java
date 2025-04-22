@@ -20,7 +20,7 @@ public class SonicSensor extends Thread{
             distance.fetchSample(sample, 0);
             LCD.drawString("Thread running ", 0, 4);
             if (sample[0] < dangerDist){
-                motorTest.stopMotors();
+                main.ObsDetected();
                 LCD.drawString("Obstacle detected " + sample[0], 0, 5);
                 LCD.drawString("" + sample[0], 0, 6);
             }
@@ -29,16 +29,3 @@ public class SonicSensor extends Thread{
 
 }
 
-
-
-// Hacky way of running the loop for x amount of time
-        // Checking if there is an obstacle infront of the robot, with ultrasopnic sensor
-        /*for (timeI = 0; timeI < 20; timeI++){
-            distance.fetchSample(sample, 0);
-            if (sample[0] < dangerDist){
-                stopMotors();
-                LCD.drawString("Obstacle detected " + sample[0], 0, 4);
-                break;
-            }
-            Delay.msDelay(100);
-        } */
