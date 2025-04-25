@@ -6,20 +6,21 @@ import lejos.hardware.Button;
 import lejos.hardware.lcd.LCD;
 import lejos.utility.Delay;
 
-public class Main extends Thread{   
-    int motorspeed; 
+public class Main {   
+        
     public static void main(String[] args) {
         // Initialize classes for the threads
         MotorTest mControl = new MotorTest();
-        SonicSensor sonic = new SonicSensor();
-        // Version number for the code. Used to check that file was uploaded properly.         
+        ObjectAvoid sonic = new ObjectAvoid();
+        LineFollower line = new LineFollower();
+        sonic.start();
+        mControl.start();
+        line.start();
         
         Button.waitForAnyPress();
+
         }
 
-        public void ObsDetected(){
-            mControl.setmotorspeed(250);
-        }
     }
     
     
